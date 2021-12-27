@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class RegisterTutorActivity extends AppCompatActivity {
 
     private EditText tutorFirstNameEditText;
     private EditText tutorLastNameEditText;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register_tutor);
 
         tutorFirstNameEditText=findViewById(R.id.TutorFirstNameEditText);
         tutorLastNameEditText=findViewById(R.id.TutorLastNameEditText);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 tutorCity=tutorCityEditText.getText().toString();
                 tutorPhoneNumber=tutorPhoneNumberEditText.getText().toString();
 
-                Toast.makeText(MainActivity.this, "successfully registered!", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterTutorActivity.this, "successfully registered!", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -1,32 +1,32 @@
 package com.example.findtutor.model;
 
-public class RegisterTutorModelActivity {
+public class Tutors {
 
     private String firstName;
     private String lastName;
     private String username;
-    private String password;
+  //  private String password;
     private String email;
     private String city;
     private String phoneNumber;
 
-    public RegisterTutorModelActivity(String firstName,
-                                      String lastName,
-                                      String username,
-                                      String password,
-                                      String email,
-                                      String city,
-                                      String phoneNumber) {
+    public Tutors(String firstName,
+                  String lastName,
+                  String username,
+                  //    String password,
+                  String email,
+                  String city,
+                  String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        this.password = password;
+      //  this.password = password;
         this.email = email;
         this.city = city;
         this.phoneNumber = phoneNumber;
     }
 
-    public RegisterTutorModelActivity() {
+    public Tutors() {
     }
 
     public String getFirstName() {
@@ -53,13 +53,13 @@ public class RegisterTutorModelActivity {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
+   // public String getPassword() {
+    //    return password;
+    //}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  //  public void setPassword(String password) {
+   //     this.password = password;
+   // }
 
     public String getEmail() {
         return email;
@@ -91,7 +91,7 @@ public class RegisterTutorModelActivity {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+               // ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

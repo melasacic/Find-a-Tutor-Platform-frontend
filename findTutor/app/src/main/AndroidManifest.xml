@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FindTutor"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".RegisterTutorActivity"
+            android:name=".GetTutorActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

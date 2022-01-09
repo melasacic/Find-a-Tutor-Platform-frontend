@@ -79,7 +79,6 @@ public class RegisterTutorActivity extends AppCompatActivity {
                     jsonBody.put("city", city);
                     jsonBody.put("phoneNumber", phoneNumber);
 
-
                     final String mRequestBody = jsonBody.toString();
 
 
@@ -87,7 +86,7 @@ public class RegisterTutorActivity extends AppCompatActivity {
                             new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                          
+
                             System.out.println(response);
                         }
                         }, new Response.ErrorListener() {

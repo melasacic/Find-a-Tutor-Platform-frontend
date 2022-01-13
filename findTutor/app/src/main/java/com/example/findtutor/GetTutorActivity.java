@@ -45,34 +45,28 @@ public class GetTutorActivity extends AppCompatActivity {
         listOfTutors=findViewById(R.id.tutorsListView);
 
        RequestQueue queue=Volley.newRequestQueue(GetTutorActivity.this);
-       String url= "http://192.168.1.14:8080/api/v1/tutor";
+       String url= "http://192.168.1.77:8080/api/v1/tutor";
 
-       JsonArrayRequest request= new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-           @Override
-           public void onResponse(JSONArray response) {
+       JsonArrayRequest request= new JsonArrayRequest(Request.Method.GET, url, null, response -> {
 
-               //List<Tutors> tutorsInfo=new ArrayList<>();
+           //List<Tutors> tutorsInfo=new ArrayList<>();
 
-               Gson gson = new Gson();
-               Type type = new TypeToken<List<Tutors>>(){}.getType();
-               List<Tutors> tutorsInfo = gson.fromJson(String.valueOf(response), type);
-               for (Tutors tutor : tutorsInfo){
-                   Log.i("Tutor Details", tutor.getFirstName() + "-" + tutor.getLastName());
-               }
+           Gson gson = new Gson();
+           Type type = new TypeToken<List<Tutors>>(){}.getType();
+           List<Tutors> tutorsInfo = gson.fromJson(String.valueOf(response), type);
 
-               tutorsInfo=Tutors.getTutors();
-               TutorsAdapter<Tutors> adapter = new TutorsAdapter<Tutors>( GetTutorActivity.this, (ArrayList<Tutors>) tutorsInfo);
-               ListView listView = (ListView) findViewById(R.id.tutorsListView);
+           TutorsAdapter<Tutors> adapter = new TutorsAdapter<Tutors>( GetTutorActivity.this, (ArrayList<Tutors>) tutorsInfo);
+           ListView listView = (ListView) findViewById(R.id.tutorsListView);
 
-               listView.setAdapter(adapter);
-           }
+           listView.setAdapter(adapter);
        }, new Response.ErrorListener() {
            @Override
            public void onErrorResponse(VolleyError error) {
-
+               //Log.e("LOG_VOLLEY", error.toString());
+               System.out.println("error");
            }
        });
 
-
+        queue.add(request);
     }
 }

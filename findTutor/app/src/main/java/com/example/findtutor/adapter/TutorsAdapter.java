@@ -7,16 +7,39 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.findtutor.R;
 import com.example.findtutor.model.Tutors;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class TutorsAdapter<T> extends ArrayAdapter<Tutors> {
+    private List<Tutors> tutors;
+    private Context context;
+    private View view;
+    private ViewGroup viewGroup;
 
 
-    public TutorsAdapter(Context context, ArrayList<Tutors> tutors){
-        super(context,0,tutors);
+    public TutorsAdapter(@NonNull Context context, @NonNull List<Tutors> tutors) {
+        super(context,0, tutors);
+        this.tutors=tutors;
+    }
+
+    @Override
+    public int getCount() {
+        int size=tutors.size();
+        return  size;
+    }
+
+    @Override
+    public Tutors getItem(int position) {
+        return tutors.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public View getView(int position, View convertView, ViewGroup parent){

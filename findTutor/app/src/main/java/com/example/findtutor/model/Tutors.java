@@ -1,32 +1,51 @@
 package com.example.findtutor.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+
 public class Tutors {
 
-    private String firstName;
-    private String lastName;
-    private String username;
-  //  private String password;
-    private String email;
-    private String city;
-    private String phoneNumber;
+    public String firstName;
+    public String lastName;
+    public String username;
+    public String email;
+    public String city;
+    public String phoneNumber;
+
+    // Constructor to convert JSON object into a Java class instance
+    public Tutors(JSONObject object){
+        try {
+            this.firstName = object.getString("firstName");
+            this.lastName = object.getString("lastName");
+            this.username = object.getString("username");
+            this.email = object.getString("email");
+            this.city = object.getString("city");
+            this.phoneNumber = object.getString("phoneNumber");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Tutors(String firstName,
                   String lastName,
                   String username,
-                  //    String password,
                   String email,
                   String city,
                   String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-      //  this.password = password;
         this.email = email;
         this.city = city;
         this.phoneNumber = phoneNumber;
     }
 
-    public Tutors() {
+    public static ArrayList<Tutors> getTutors(){
+        ArrayList<Tutors> tutors = new ArrayList<Tutors>();
+        return tutors;
     }
 
     public String getFirstName() {
@@ -53,13 +72,6 @@ public class Tutors {
         this.username = username;
     }
 
-   // public String getPassword() {
-    //    return password;
-    //}
-
-  //  public void setPassword(String password) {
-   //     this.password = password;
-   // }
 
     public String getEmail() {
         return email;
@@ -91,10 +103,11 @@ public class Tutors {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
-               // ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+
 }

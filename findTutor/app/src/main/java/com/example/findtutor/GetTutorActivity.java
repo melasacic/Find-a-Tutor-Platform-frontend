@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import com.android.volley.toolbox.Volley;
+import com.example.findtutor.adapter.TutorsAdapter;
 import com.example.findtutor.model.Tutors;
 
 import com.google.gson.Gson;
@@ -33,12 +34,14 @@ import java.util.List;
 public class GetTutorActivity extends AppCompatActivity {
     TextView textView;
     ListView listOfTutors;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_tutor);
 
         textView = findViewById(R.id.text);
+
         listOfTutors=findViewById(R.id.tutorsListView);
 
        RequestQueue queue=Volley.newRequestQueue(GetTutorActivity.this);
@@ -56,6 +59,12 @@ public class GetTutorActivity extends AppCompatActivity {
                for (Tutors tutor : tutorsInfo){
                    Log.i("Tutor Details", tutor.getFirstName() + "-" + tutor.getLastName());
                }
+
+               tutorsInfo=Tutors.getTutors();
+               TutorsAdapter<Tutors> adapter = new TutorsAdapter<Tutors>( GetTutorActivity.this, (ArrayList<Tutors>) tutorsInfo);
+               ListView listView = (ListView) findViewById(R.id.tutorsListView);
+
+               listView.setAdapter(adapter);
            }
        }, new Response.ErrorListener() {
            @Override
@@ -63,5 +72,7 @@ public class GetTutorActivity extends AppCompatActivity {
 
            }
        });
+
+
     }
 }

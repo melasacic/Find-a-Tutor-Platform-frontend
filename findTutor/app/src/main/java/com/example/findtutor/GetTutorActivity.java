@@ -32,7 +32,7 @@ import java.util.List;
 
 
 public class GetTutorActivity extends AppCompatActivity {
-    TextView textView;
+   // TextView textView;
     ListView listOfTutors;
 
     @Override
@@ -40,7 +40,7 @@ public class GetTutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_tutor);
 
-        textView = findViewById(R.id.text);
+      //  textView = findViewById(R.id.text);
 
         listOfTutors=findViewById(R.id.tutorsListView);
 

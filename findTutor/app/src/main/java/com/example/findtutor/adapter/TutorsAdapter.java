@@ -20,10 +20,14 @@ public class TutorsAdapter<T> extends ArrayAdapter<Tutors> {
     private View view;
     private ViewGroup viewGroup;
 
+   /* public TutorsAdapter( List<Tutors> tutors){
+        this.tutors=tutors;
+    }*/
 
     public TutorsAdapter(@NonNull Context context, @NonNull List<Tutors> tutors) {
         super(context,0, tutors);
         this.tutors=tutors;
+        this.context=context;
     }
 
     @Override
@@ -46,13 +50,14 @@ public class TutorsAdapter<T> extends ArrayAdapter<Tutors> {
 
         Tutors tutor = getItem(position);
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate
-                    (R.layout.get_tutor_listview, parent, false);
+       if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.get_tutor_listview, parent, false);
         }
 
         TextView tutorFirstName = (TextView) convertView.findViewById(R.id.TutorListViewTextView1);
         TextView tutorLastName = (TextView) convertView.findViewById(R.id.TutorListViewTextView2);
+
+       // Tutors tutors=(Tutors) getItem(position);
 
         tutorFirstName.setText(tutor.firstName);
         tutorLastName.setText(tutor.lastName);

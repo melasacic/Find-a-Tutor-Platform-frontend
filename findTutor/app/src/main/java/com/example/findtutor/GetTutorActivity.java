@@ -1,10 +1,12 @@
 package com.example.findtutor;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
+import android.os.Parcelable;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,8 +23,6 @@ import com.example.findtutor.model.Tutors;
 import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
 
 
 import java.lang.reflect.Type;
@@ -59,6 +59,18 @@ public class GetTutorActivity extends AppCompatActivity {
            ListView listView = (ListView) findViewById(R.id.tutorsListView);
 
            listView.setAdapter(adapter);
+
+           listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                  // List<Tutors> currentTutor = tutorsInfo.getItemAtPosition(position);
+
+                   Tutors currentTutor= tutorsInfo.get(position);
+                   Intent intent=new Intent(GetTutorActivity.this, EditTutorActivity.class);
+                   intent.putExtra("currentTutor", (Parcelable) currentTutor);
+                   startActivity(intent);
+               }
+           });
        }, new Response.ErrorListener() {
            @Override
            public void onErrorResponse(VolleyError error) {
@@ -69,4 +81,6 @@ public class GetTutorActivity extends AppCompatActivity {
 
         queue.add(request);
     }
+
+
 }

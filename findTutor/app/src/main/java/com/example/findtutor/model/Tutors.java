@@ -1,19 +1,24 @@
 package com.example.findtutor.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 
-public class Tutors {
+public class Tutors implements Parcelable {
 
     public String firstName;
     public String lastName;
     public String username;
+    public String password;
     public String email;
     public String city;
     public String phoneNumber;
+
 
     // Constructor to convert JSON object into a Java class instance
     public Tutors(JSONObject object){
@@ -21,6 +26,7 @@ public class Tutors {
             this.firstName = object.getString("firstName");
             this.lastName = object.getString("lastName");
             this.username = object.getString("username");
+            this.password= object.getString("password");
             this.email = object.getString("email");
             this.city = object.getString("city");
             this.phoneNumber = object.getString("phoneNumber");
@@ -32,20 +38,56 @@ public class Tutors {
     public Tutors(String firstName,
                   String lastName,
                   String username,
+                  String password,
                   String email,
                   String city,
                   String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
+        this.password= password;
         this.email = email;
         this.city = city;
         this.phoneNumber = phoneNumber;
     }
 
+    public Tutors() {
+
+    }
+
+    protected Tutors(Parcel in) {
+        firstName = in.readString();
+        lastName = in.readString();
+        username = in.readString();
+        password = in.readString();
+        email = in.readString();
+        city = in.readString();
+        phoneNumber = in.readString();
+    }
+
+    public static final Creator<Tutors> CREATOR = new Creator<Tutors>() {
+        @Override
+        public Tutors createFromParcel(Parcel in) {
+            return new Tutors(in);
+        }
+
+        @Override
+        public Tutors[] newArray(int size) {
+            return new Tutors[size];
+        }
+    };
+
     public static ArrayList<Tutors> getTutors(){
         ArrayList<Tutors> tutors = new ArrayList<Tutors>();
         return tutors;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -103,6 +145,7 @@ public class Tutors {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -110,4 +153,19 @@ public class Tutors {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(username);
+        dest.writeString(password);
+        dest.writeString(email);
+        dest.writeString(city);
+        dest.writeString(phoneNumber);
+    }
 }

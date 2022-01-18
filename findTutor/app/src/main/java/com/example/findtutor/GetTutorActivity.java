@@ -69,6 +69,8 @@ public class GetTutorActivity extends AppCompatActivity {
                    Intent intent=new Intent(GetTutorActivity.this, EditTutorActivity.class);
                    intent.putExtra("currentTutor", (Parcelable) currentTutor);
                    startActivity(intent);
+
+                   Intent intent1=getIntent();
                }
            });
        }, new Response.ErrorListener() {

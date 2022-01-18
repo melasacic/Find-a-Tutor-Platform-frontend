@@ -1,10 +1,12 @@
 package com.example.findtutor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,35 +42,33 @@ public class EditTutorActivity extends AppCompatActivity {
         EditTutorFirstNameEditText = findViewById(R.id.EditTutorFirstNameEditText);
         EditTutorLastNameEditText = findViewById(R.id.EditTutorLastNameEditText);
         EditTutorUsernameEditText = findViewById(R.id.EditTutorUsernameEditText);
-        EditTutorPasswordEditText = findViewById(R.id.EditTutorPasswordEditText);
         EditTutorEmailEditText = findViewById(R.id.EditTutorEmailEditText);
         EditTutorCityEditText = findViewById(R.id.EditTutorCityEditText);
         EditTutorPhoneNumberEditText = findViewById(R.id.EditTutorPhoneNumberEditText);
 
         EditTutorButton = findViewById(R.id.TutorEditButton);
 
-        String firstName = EditTutorFirstNameEditText.getText().toString();
-        String lastName = EditTutorLastNameEditText.getText().toString();
-        String username = EditTutorUsernameEditText.getText().toString();
-        String password = EditTutorPasswordEditText.getText().toString();
-        String email = EditTutorEmailEditText.getText().toString();
-        String city = EditTutorCityEditText.getText().toString();
-        String phoneNumber = EditTutorPhoneNumberEditText.getText().toString();
-
         Tutors tutors = getIntent().getParcelableExtra("currentTutor");
 
         EditTutorFirstNameEditText.setText(tutors.getFirstName());
         EditTutorLastNameEditText.setText(tutors.getLastName());
         EditTutorUsernameEditText.setText(tutors.getUsername());
-        EditTutorPasswordEditText.setText(tutors.getPassword());
         EditTutorEmailEditText.setText(tutors.getEmail());
         EditTutorCityEditText.setText(tutors.getCity());
         EditTutorPhoneNumberEditText.setText(tutors.getPhoneNumber());
 
 
-       /* EditTutorButton.setOnClickListener(new View.OnClickListener() {
+        EditTutorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String firstName = EditTutorFirstNameEditText.getText().toString();
+                String lastName = EditTutorLastNameEditText.getText().toString();
+                String username = EditTutorUsernameEditText.getText().toString();
+                String email = EditTutorEmailEditText.getText().toString();
+                String city = EditTutorCityEditText.getText().toString();
+                String phoneNumber = EditTutorPhoneNumberEditText.getText().toString();
+
                 try {
                     RequestQueue requestQueue= Volley.newRequestQueue(EditTutorActivity.this);
                     String URL = "http://192.168.1.14:8080/api/v1/tutor";
@@ -77,27 +77,21 @@ public class EditTutorActivity extends AppCompatActivity {
                     jsonBody.put("firstName",  firstName);
                     jsonBody.put("lastName", lastName);
                     jsonBody.put("username", username);
-                    jsonBody.put("password",  password);
                     jsonBody.put("email", email);
                     jsonBody.put("city", city);
                     jsonBody.put("phoneNumber", phoneNumber);
 
                     final String mRequestBody = jsonBody.toString();
 
-                    StringRequest stringRequest = new StringRequest(Request.Method.PATCH, URL,
+                    StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
 
-                                    Tutors tutors = getIntent().getParcelableExtra("currentTutor");
-
-                                    EditTutorFirstNameEditText.setText(tutors.getFirstName());
-                                    EditTutorLastNameEditText.setText(tutors.getLastName());
-                                    EditTutorUsernameEditText.setText(tutors.getUsername());
-                                    EditTutorPasswordEditText.setText(tutors.getPassword());
-                                    EditTutorEmailEditText.setText(tutors.getEmail());
-                                    EditTutorCityEditText.setText(tutors.getCity());
-                                    EditTutorPhoneNumberEditText.setText(tutors.getPhoneNumber());
+                                    Log.d("Response", response.toString());
+                                   Intent intent=new Intent(EditTutorActivity.this,GetTutorActivity.class);
+                                   startActivity(intent);
+                                  // System.out.println(response);
 
                                 }
                             },
@@ -108,17 +102,15 @@ public class EditTutorActivity extends AppCompatActivity {
                                 }
                             });
 
+                    requestQueue.add(stringRequest);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
-
-            });
-        }*/
-
-    }}
+        });
+    }
+}
 
 
 

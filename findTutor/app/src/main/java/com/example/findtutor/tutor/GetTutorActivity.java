@@ -1,6 +1,8 @@
-package com.example.findtutor;
+package com.example.findtutor.tutor;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.os.Parcelable;
@@ -17,8 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import com.android.volley.toolbox.Volley;
-import com.example.findtutor.adapter.TutorsAdapter;
-import com.example.findtutor.model.Tutors;
+import com.example.findtutor.R;
+import com.example.findtutor.tutor.adapter.TutorsAdapter;
+import com.example.findtutor.tutor.model.Tutors;
 
 import com.google.gson.Gson;
 
@@ -39,13 +42,12 @@ public class GetTutorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_tutor);
-
-      //  textView = findViewById(R.id.text);
-
         listOfTutors=findViewById(R.id.tutorsListView);
 
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
        RequestQueue queue=Volley.newRequestQueue(GetTutorActivity.this);
-       String url= "http://192.168.1.77:8080/api/v1/tutor";
+       String url= "http://192.168.124.194:8080/api/v1/tutor";
 
        JsonArrayRequest request= new JsonArrayRequest(Request.Method.GET, url, null, response -> {
 
@@ -69,8 +71,6 @@ public class GetTutorActivity extends AppCompatActivity {
                    Intent intent=new Intent(GetTutorActivity.this, EditTutorActivity.class);
                    intent.putExtra("currentTutor", (Parcelable) currentTutor);
                    startActivity(intent);
-
-                   Intent intent1=getIntent();
                }
            });
        }, new Response.ErrorListener() {

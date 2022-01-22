@@ -1,4 +1,4 @@
-package com.example.findtutor;
+package com.example.findtutor.tutor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.findtutor.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,7 +69,7 @@ public class RegisterTutorActivity extends AppCompatActivity {
 
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(RegisterTutorActivity.this);
-                    String URL = "http://192.168.1.14:8080/api/v1/tutor";
+                    String URL = "http://192.168.124.194:8080/api/v1/tutor";
 
                     JSONObject jsonBody = new JSONObject();
                     jsonBody.put("firstName",  firstName);
@@ -83,13 +84,7 @@ public class RegisterTutorActivity extends AppCompatActivity {
 
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                            new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                            System.out.println(response);
-                        }
-                        }, new Response.ErrorListener() {
+                            response -> System.out.println(response), new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.e("LOG_VOLLEY", error.toString());

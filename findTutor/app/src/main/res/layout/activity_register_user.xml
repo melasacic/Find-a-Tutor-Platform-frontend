@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/UserFirstNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First name"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserFirstNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="first name"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/UserLastNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last name"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserLastNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="last name"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/UserUsernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserUsernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/UserPasswordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/UserEmailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserEmailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/UserCityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserCityEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="city"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/UserPhoneNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/UserPhoneNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="phone number"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/UserRegisterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="REGISTER"/>
+
+
+
+
+</LinearLayout>

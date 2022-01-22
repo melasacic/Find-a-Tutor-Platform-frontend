@@ -1,4 +1,4 @@
-package com.example.findtutor.adapter;
+package com.example.findtutor.tutor.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.findtutor.R;
-import com.example.findtutor.model.Tutors;
+import com.example.findtutor.tutor.model.Tutors;
 
 import java.util.List;
 

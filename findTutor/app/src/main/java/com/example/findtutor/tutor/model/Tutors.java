@@ -1,4 +1,4 @@
-package com.example.findtutor.model;
+package com.example.findtutor.tutor.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 public class Tutors implements Parcelable {
-
+    public String id;
     public String firstName;
     public String lastName;
     public String username;
@@ -30,6 +30,7 @@ public class Tutors implements Parcelable {
             this.email = object.getString("email");
             this.city = object.getString("city");
             this.phoneNumber = object.getString("phoneNumber");
+            this.id = object.getString("id");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -41,7 +42,8 @@ public class Tutors implements Parcelable {
                   String password,
                   String email,
                   String city,
-                  String phoneNumber) {
+                  String phoneNumber,
+                  String id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -49,6 +51,7 @@ public class Tutors implements Parcelable {
         this.email = email;
         this.city = city;
         this.phoneNumber = phoneNumber;
+        this.id = id;
     }
 
     public Tutors() {
@@ -56,6 +59,7 @@ public class Tutors implements Parcelable {
     }
 
     protected Tutors(Parcel in) {
+        id = in.readString();
         firstName = in.readString();
         lastName = in.readString();
         username = in.readString();
@@ -80,6 +84,14 @@ public class Tutors implements Parcelable {
     public static ArrayList<Tutors> getTutors(){
         ArrayList<Tutors> tutors = new ArrayList<Tutors>();
         return tutors;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPassword() {
@@ -160,6 +172,7 @@ public class Tutors implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
         dest.writeString(firstName);
         dest.writeString(lastName);
         dest.writeString(username);

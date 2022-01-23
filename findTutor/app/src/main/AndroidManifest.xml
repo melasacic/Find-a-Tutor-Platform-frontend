@@ -14,7 +14,15 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".tutor.GetTutorActivity" />
         <activity android:name=".tutor.EditTutorActivity" />
-        <activity android:name=".login.LoginActivity"
+        <activity android:name=".tutor.RegisterTutorActivity" />
+        <activity android:name=".tutor.TutorDetailsActivity" />
+        <activity android:name=".user.GetUserActivity" />
+        <activity android:name=".user.EditUserActivity" />
+        <activity android:name=".user.RegisterUserActivity" />
+        <activity android:name=".login.LoginActivity" />
+
+
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

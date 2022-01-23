@@ -19,6 +19,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findtutor.R;
+import com.example.findtutor.login.LoginActivity;
 import com.example.findtutor.login.LoginState;
 import com.example.findtutor.tutor.model.Tutors;
 
@@ -56,7 +57,7 @@ public class EditTutorActivity extends AppCompatActivity {
 
         EditTutorButton = findViewById(R.id.TutorEditButton);
 
-        Tutors tutors = getIntent().getParcelableExtra("currentTutor");
+        Tutors tutors = LoginState.tutor;
 
         EditTutorFirstNameEditText.setText(tutors.getFirstName());
         EditTutorLastNameEditText.setText(tutors.getLastName());
@@ -71,11 +72,17 @@ public class EditTutorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String firstName = EditTutorFirstNameEditText.getText().toString();
+                tutors.setFirstName(firstName);
                 String lastName = EditTutorLastNameEditText.getText().toString();
+                tutors.setLastName(lastName);
                 String username = EditTutorUsernameEditText.getText().toString();
+                tutors.setUsername(username);
                 String email = EditTutorEmailEditText.getText().toString();
+                tutors.setEmail(email);
                 String city = EditTutorCityEditText.getText().toString();
+                tutors.setCity(city);
                 String phoneNumber = EditTutorPhoneNumberEditText.getText().toString();
+                tutors.setPhoneNumber(phoneNumber);
 
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(EditTutorActivity.this);
@@ -94,7 +101,9 @@ public class EditTutorActivity extends AppCompatActivity {
 
                     StringRequest stringRequest = new StringRequest(Request.Method.PATCH, URL,
                             response -> {
-                                Intent intent = new Intent(EditTutorActivity.this, GetTutorActivity.class);
+                                LoginState.tutor = tutors;
+                                Intent intent = new Intent(EditTutorActivity.this, TutorDetailsActivity.class);
+                                intent.putExtra("currentTutor", tutors);
                                 startActivity(intent);
                             },
                             error -> Log.e("LOG_VOLLEY", error.toString())) {

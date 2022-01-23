@@ -2,11 +2,13 @@ package com.example.findtutor.tutor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -19,6 +21,8 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findtutor.R;
+import com.example.findtutor.login.LoginActivity;
+import com.example.findtutor.user.RegisterUserActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,38 +48,38 @@ public class RegisterTutorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_tutor);
 
         // assign values to each control on the layout
-        tutorFirstNameEditText=findViewById(R.id.TutorFirstNameEditText);
-        tutorLastNameEditText=findViewById(R.id.TutorLastNameEditText);
-        tutorUsernameEditText=findViewById(R.id.TutorUsernameEditText);
-        tutorPasswordEditText=findViewById(R.id.TutorPasswordEditText);
-        tutorEmailEditText=findViewById(R.id.TutorEmailEditText);
-        tutorCityEditText=findViewById(R.id.TutorCityEditText);
-        tutorPhoneNumberEditText=findViewById(R.id.TutorPhoneNumberEditText);
+        tutorFirstNameEditText = findViewById(R.id.TutorFirstNameEditText);
+        tutorLastNameEditText = findViewById(R.id.TutorLastNameEditText);
+        tutorUsernameEditText = findViewById(R.id.TutorUsernameEditText);
+        tutorPasswordEditText = findViewById(R.id.TutorPasswordEditText);
+        tutorEmailEditText = findViewById(R.id.TutorEmailEditText);
+        tutorCityEditText = findViewById(R.id.TutorCityEditText);
+        tutorPhoneNumberEditText = findViewById(R.id.TutorPhoneNumberEditText);
 
-        registerNewTutorButton=findViewById(R.id.TutorRegisterButton);
+        registerNewTutorButton = findViewById(R.id.TutorRegisterButton);
 
         registerNewTutorButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                String firstName= tutorFirstNameEditText.getText().toString();
-                String lastName=tutorLastNameEditText.getText().toString();
-                String username=tutorUsernameEditText.getText().toString();
-                String password=tutorPasswordEditText.getText().toString();
-                String email=tutorEmailEditText.getText().toString();
-                String city= tutorCityEditText.getText().toString();
-                String phoneNumber=tutorPhoneNumberEditText.getText().toString();
+                String firstName = tutorFirstNameEditText.getText().toString();
+                String lastName = tutorLastNameEditText.getText().toString();
+                String username = tutorUsernameEditText.getText().toString();
+                String password = tutorPasswordEditText.getText().toString();
+                String email = tutorEmailEditText.getText().toString();
+                String city = tutorCityEditText.getText().toString();
+                String phoneNumber = tutorPhoneNumberEditText.getText().toString();
 
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(RegisterTutorActivity.this);
                     String URL = "http://192.168.124.194:8080/api/v1/tutor";
 
                     JSONObject jsonBody = new JSONObject();
-                    jsonBody.put("firstName",  firstName);
+                    jsonBody.put("firstName", firstName);
                     jsonBody.put("lastName", lastName);
                     jsonBody.put("username", username);
-                    jsonBody.put("password",  password);
+                    jsonBody.put("password", password);
                     jsonBody.put("email", email);
                     jsonBody.put("city", city);
                     jsonBody.put("phoneNumber", phoneNumber);
@@ -84,7 +88,11 @@ public class RegisterTutorActivity extends AppCompatActivity {
 
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                            response -> System.out.println(response), new Response.ErrorListener() {
+                            response -> {
+                                Intent intent = new Intent(RegisterTutorActivity.this, LoginActivity.class);
+                                intent.putExtra("loginType", "tutor");
+                                startActivity(intent);
+                            }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.e("LOG_VOLLEY", error.toString());
@@ -92,8 +100,8 @@ public class RegisterTutorActivity extends AppCompatActivity {
                     }) {
                         @Override
                         public String getBodyContentType() {
-                             return "application/json; charset=utf-8";
-                    }
+                            return "application/json; charset=utf-8";
+                        }
 
                         @Override
                         public byte[] getBody() throws AuthFailureError {

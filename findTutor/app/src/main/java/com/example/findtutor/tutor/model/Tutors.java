@@ -18,7 +18,7 @@ public class Tutors implements Parcelable {
     public String email;
     public String city;
     public String phoneNumber;
-
+    public Double rating;
 
     // Constructor to convert JSON object into a Java class instance
     public Tutors(JSONObject object){
@@ -67,6 +67,7 @@ public class Tutors implements Parcelable {
         email = in.readString();
         city = in.readString();
         phoneNumber = in.readString();
+        rating = Double.valueOf(in.readString());
     }
 
     public static final Creator<Tutors> CREATOR = new Creator<Tutors>() {
@@ -151,6 +152,14 @@ public class Tutors implements Parcelable {
         this.phoneNumber = phoneNumber;
     }
 
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
         return "RegisterTutorModelActivity{" +
@@ -180,5 +189,6 @@ public class Tutors implements Parcelable {
         dest.writeString(email);
         dest.writeString(city);
         dest.writeString(phoneNumber);
+        dest.writeString(rating.toString());
     }
 }

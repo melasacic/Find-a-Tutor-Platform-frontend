@@ -19,6 +19,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findtutor.R;
+import com.example.findtutor.login.LoginState;
 import com.example.findtutor.tutor.GetTutorActivity;
 import com.example.findtutor.tutor.model.Tutors;
 import com.example.findtutor.user.model.User;
@@ -27,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditUserActivity extends AppCompatActivity {
 
@@ -51,7 +54,7 @@ public class EditUserActivity extends AppCompatActivity {
 
         EditUserButton = findViewById(R.id.UserEditButton);
 
-        User user = getIntent().getParcelableExtra("currentUser");
+        User user = LoginState.user;
 
         EditUserFirstNameEditText.setText(user.getFirstName());
         EditUserLastNameEditText.setText(user.getLastName());
@@ -63,11 +66,17 @@ public class EditUserActivity extends AppCompatActivity {
 
         EditUserButton.setOnClickListener(v -> {
             String firstName = EditUserFirstNameEditText.getText().toString();
+            user.setFirstName(firstName);
             String lastName = EditUserLastNameEditText.getText().toString();
+            user.setLastName(lastName);
             String username = EditUserUsernameEditText.getText().toString();
+            user.setUsername(username);
             String email = EditUserEmailEditText.getText().toString();
+            user.setEmail(email);
             String city = EditUserCityEditText.getText().toString();
+            user.setCity(city);
             String phoneNumber = EditUserPhoneNumberEditText.getText().toString();
+            user.setPhoneNumber(phoneNumber);
 
             try {
                 RequestQueue requestQueue = Volley.newRequestQueue(EditUserActivity.this);
@@ -86,7 +95,8 @@ public class EditUserActivity extends AppCompatActivity {
 
                 StringRequest stringRequest = new StringRequest(Request.Method.PATCH, URL,
                         response -> {
-                            Intent intent = new Intent(EditUserActivity.this, GetUserActivity.class);
+                            LoginState.user = user;
+                            Intent intent = new Intent(EditUserActivity.this, GetTutorActivity.class);
                             startActivity(intent);
                         },
                         error -> Log.e("LOG_VOLLEY", error.toString())) {
@@ -115,6 +125,13 @@ public class EditUserActivity extends AppCompatActivity {
 
                         }
                         return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("Authorization", LoginState.token);
+                        return params;
                     }
                 };
 

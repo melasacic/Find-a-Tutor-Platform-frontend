@@ -1,5 +1,6 @@
 package com.example.findtutor.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,8 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.findtutor.R;
+import com.example.findtutor.login.LoginActivity;
+import com.example.findtutor.tutor.GetTutorActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,7 +83,11 @@ public class RegisterUserActivity extends AppCompatActivity {
 
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                        response -> System.out.println(response), error -> Log.e("LOG_VOLLEY", error.toString())) {
+                        response -> {
+                            Intent intent = new Intent(RegisterUserActivity.this, LoginActivity.class);
+                            intent.putExtra("loginType", "user");
+                            startActivity(intent);
+                        }, error -> Log.e("LOG_VOLLEY", error.toString())) {
                     @Override
                     public String getBodyContentType() {
                          return "application/json; charset=utf-8";

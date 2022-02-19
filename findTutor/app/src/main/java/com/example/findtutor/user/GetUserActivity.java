@@ -41,7 +41,7 @@ public class GetUserActivity extends AppCompatActivity {
         listOfUsers = findViewById(R.id.usersListView);
 
         RequestQueue queue = Volley.newRequestQueue(GetUserActivity.this);
-        String url = "http://192.168.124.194:8080/api/v1/user";
+        String url = "http://192.168.1.89:8080/api/v1/user";
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, response -> {
             Gson gson = new Gson();

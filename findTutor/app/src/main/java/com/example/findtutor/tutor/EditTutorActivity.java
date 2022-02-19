@@ -39,6 +39,7 @@ public class EditTutorActivity extends AppCompatActivity {
     private EditText EditTutorEmailEditText;
     private EditText EditTutorCityEditText;
     private EditText EditTutorPhoneNumberEditText;
+    private EditText EditTutorInstructionsTypeEditText;
 
     private Button EditTutorButton;
 
@@ -54,6 +55,7 @@ public class EditTutorActivity extends AppCompatActivity {
         EditTutorEmailEditText = findViewById(R.id.EditTutorEmailEditText);
         EditTutorCityEditText = findViewById(R.id.EditTutorCityEditText);
         EditTutorPhoneNumberEditText = findViewById(R.id.EditTutorPhoneNumberEditText);
+        EditTutorInstructionsTypeEditText = findViewById(R.id.EditTutorInstructionsTypeEditText);
 
         EditTutorButton = findViewById(R.id.TutorEditButton);
 
@@ -65,6 +67,7 @@ public class EditTutorActivity extends AppCompatActivity {
         EditTutorEmailEditText.setText(tutors.getEmail());
         EditTutorCityEditText.setText(tutors.getCity());
         EditTutorPhoneNumberEditText.setText(tutors.getPhoneNumber());
+        EditTutorInstructionsTypeEditText.setText(tutors.getInstructionsType());
 
 
         EditTutorButton.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +86,12 @@ public class EditTutorActivity extends AppCompatActivity {
                 tutors.setCity(city);
                 String phoneNumber = EditTutorPhoneNumberEditText.getText().toString();
                 tutors.setPhoneNumber(phoneNumber);
+                String instructionsType =  EditTutorInstructionsTypeEditText.getText().toString();
+                tutors.setInstructionsType(instructionsType);
 
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(EditTutorActivity.this);
-                    String URL = "http://192.168.124.194:8080/api/v1/tutor/" + tutors.id;
+                    String URL = "http://192.168.1.89:8080/api/v1/tutor/" + tutors.id;
 
                     JSONObject jsonBody = new JSONObject();
                     jsonBody.put("firstName", firstName);
@@ -95,6 +100,7 @@ public class EditTutorActivity extends AppCompatActivity {
                     jsonBody.put("email", email);
                     jsonBody.put("city", city);
                     jsonBody.put("phoneNumber", phoneNumber);
+                    jsonBody.put("instructionsType", instructionsType);
 
                     final String mRequestBody = jsonBody.toString();
 

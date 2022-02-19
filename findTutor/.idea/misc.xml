@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_edit_user.xml" value="0.7207392197125256" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_edit_tutor.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_edit_user.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_get_tutor.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_get_user.xml" value="0.3043251693590412" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_register_tutor.xml" value="0.16032608695652173" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_register_user.xml" value="0.7207392197125256" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_register_tutor.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/activity_register_user.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/get_tutor_listview.xml" value="0.5" />
         <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/get_user_listview.xml" value="0.31614583333333335" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/main_activity.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/tutor_details_activity.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/layout/user_login_activity.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/findTutor/app/src/main/res/menu/main_menu.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/nameSurname2/findTutor/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>

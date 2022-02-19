@@ -19,6 +19,7 @@ public class Tutors implements Parcelable {
     public String city;
     public String phoneNumber;
     public Double rating;
+    public String instructionsType;
 
     // Constructor to convert JSON object into a Java class instance
     public Tutors(JSONObject object){
@@ -31,6 +32,7 @@ public class Tutors implements Parcelable {
             this.city = object.getString("city");
             this.phoneNumber = object.getString("phoneNumber");
             this.id = object.getString("id");
+            this.instructionsType = object.getString("instructionsType");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -43,7 +45,8 @@ public class Tutors implements Parcelable {
                   String email,
                   String city,
                   String phoneNumber,
-                  String id) {
+                  String id,
+                  String instructionsType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -52,6 +55,7 @@ public class Tutors implements Parcelable {
         this.city = city;
         this.phoneNumber = phoneNumber;
         this.id = id;
+        this.instructionsType = instructionsType;
     }
 
     public Tutors() {
@@ -68,6 +72,7 @@ public class Tutors implements Parcelable {
         city = in.readString();
         phoneNumber = in.readString();
         rating = Double.valueOf(in.readString());
+        instructionsType = in.readString();
     }
 
     public static final Creator<Tutors> CREATOR = new Creator<Tutors>() {
@@ -85,6 +90,14 @@ public class Tutors implements Parcelable {
     public static ArrayList<Tutors> getTutors(){
         ArrayList<Tutors> tutors = new ArrayList<Tutors>();
         return tutors;
+    }
+
+    public String getInstructionsType() {
+        return instructionsType;
+    }
+
+    public void setInstructionsType(String instructionsType) {
+        this.instructionsType = instructionsType;
     }
 
     public String getId() {
@@ -170,6 +183,7 @@ public class Tutors implements Parcelable {
                 ", email='" + email + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", instructionsType ='" + instructionsType + '\'' +
                 '}';
     }
 
@@ -190,5 +204,6 @@ public class Tutors implements Parcelable {
         dest.writeString(city);
         dest.writeString(phoneNumber);
         dest.writeString(rating.toString());
+        dest.writeString(instructionsType.toString());
     }
 }

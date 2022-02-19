@@ -51,7 +51,7 @@ public class GetTutorActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
         RequestQueue queue = Volley.newRequestQueue(GetTutorActivity.this);
-        String url = "http://192.168.124.194:8080/api/v1/tutor";
+        String url = "http://192.168.1.89:8080/api/v1/tutor";
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, response -> {
 

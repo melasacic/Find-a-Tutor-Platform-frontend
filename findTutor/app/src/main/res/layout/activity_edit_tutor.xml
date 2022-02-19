@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    app:contentPadding="16dp"
+    layout_height=""
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
 <LinearLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="#D7DDDD">
 
     <TextView
         android:id="@+id/EditTutorFirstNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="First name"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/EditTutorFirstNameEditText"
@@ -23,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Last name"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/EditTutorLastNameEditText"
@@ -36,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/EditTutorUsernameEditText"
@@ -49,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/EditTutorEmailEditText"
@@ -62,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="City"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/EditTutorCityEditText"
@@ -75,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone Number"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/EditTutorPhoneNumberEditText"
@@ -83,14 +94,30 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:id="@+id/TutorEditButton"
+    <TextView
+        android:id="@+id/EditTutorInstructionsTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject"
+        android:layout_marginBottom="5dp"/>
+
+    <EditText
+        android:id="@+id/EditTutorInstructionsTypeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="EDIT"/>
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/TutorEditButton"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="EDIT" />
 
 
 
 
 </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

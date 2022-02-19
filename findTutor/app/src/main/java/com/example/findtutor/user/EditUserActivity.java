@@ -80,7 +80,7 @@ public class EditUserActivity extends AppCompatActivity {
 
             try {
                 RequestQueue requestQueue = Volley.newRequestQueue(EditUserActivity.this);
-                String URL = "http://192.168.124.194:8080/api/v1/user/" + user.id;
+                String URL = "http://192.168.1.89:8080/api/v1/user/" + user.id;
 
                 JSONObject jsonBody = new JSONObject();
                 jsonBody.put("firstName", firstName);

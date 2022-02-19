@@ -43,6 +43,7 @@ public class TutorDetailsActivity extends AppCompatActivity {
     private TextView tutorPhoneTextView;
     private TextView tutorCityTextView;
     private TextView tutorRatingTextView;
+    private TextView tutorInstructionsType;
     private Button tutorEditButton;
     private Button tutorRateButton;
 
@@ -56,6 +57,7 @@ public class TutorDetailsActivity extends AppCompatActivity {
         tutorPhoneTextView = findViewById(R.id.tutorPhoneTextView);
         tutorCityTextView = findViewById(R.id.tutorCityTextView);
         tutorRatingTextView = findViewById(R.id.tutorRatingTextView);
+        tutorInstructionsType = findViewById(R.id.tutorInstructionsTypeTextView);
 
         tutorEditButton = findViewById(R.id.editTutorButton);
         tutorRateButton = findViewById(R.id.rateTutorButton);
@@ -67,6 +69,7 @@ public class TutorDetailsActivity extends AppCompatActivity {
         tutorPhoneTextView.setText(tutor.getPhoneNumber());
         tutorCityTextView.setText(tutor.getCity());
         tutorRatingTextView.setText("Rating: " + tutor.getRating() == null ? "0" : tutor.getRating().toString());
+        tutorInstructionsType.setText(tutor.getInstructionsType());
 
         if ("user".equals(LoginState.userType)) {
             tutorRateButton.setVisibility(View.VISIBLE);
@@ -97,7 +100,7 @@ public class TutorDetailsActivity extends AppCompatActivity {
     private void rateTutor(String rating, Long tutorId){
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(TutorDetailsActivity.this);
-            String URL = "http://192.168.124.194:8080/api/v1/tutor/rate/"+ tutorId;
+            String URL = "http://192.168.1.89:8080/api/v1/tutor/rate/"+ tutorId;
 
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("rating", rating);

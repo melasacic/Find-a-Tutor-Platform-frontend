@@ -68,7 +68,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
             try {
                 RequestQueue requestQueue = Volley.newRequestQueue(RegisterUserActivity.this);
-                String URL = "http://192.168.124.194:8080/api/v1/user";
+                String URL = "http://192.168.1.89:8080/api/v1/user";
 
                 JSONObject jsonBody = new JSONObject();
                 jsonBody.put("firstName",  firstName);

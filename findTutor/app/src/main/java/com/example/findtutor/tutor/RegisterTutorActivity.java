@@ -39,6 +39,7 @@ public class RegisterTutorActivity extends AppCompatActivity {
     private EditText tutorEmailEditText;
     private EditText tutorCityEditText;
     private EditText tutorPhoneNumberEditText;
+    private EditText tutorInstructionsType;
 
     private Button registerNewTutorButton;
 
@@ -55,6 +56,7 @@ public class RegisterTutorActivity extends AppCompatActivity {
         tutorEmailEditText = findViewById(R.id.TutorEmailEditText);
         tutorCityEditText = findViewById(R.id.TutorCityEditText);
         tutorPhoneNumberEditText = findViewById(R.id.TutorPhoneNumberEditText);
+        tutorInstructionsType = findViewById(R.id.TutorInstructionsTypeEditText);
 
         registerNewTutorButton = findViewById(R.id.TutorRegisterButton);
 
@@ -70,10 +72,11 @@ public class RegisterTutorActivity extends AppCompatActivity {
                 String email = tutorEmailEditText.getText().toString();
                 String city = tutorCityEditText.getText().toString();
                 String phoneNumber = tutorPhoneNumberEditText.getText().toString();
+                String instructionsType = tutorInstructionsType.getText().toString();
 
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(RegisterTutorActivity.this);
-                    String URL = "http://192.168.124.194:8080/api/v1/tutor";
+                    String URL = "http://192.168.1.89:8080/api/v1/tutor";
 
                     JSONObject jsonBody = new JSONObject();
                     jsonBody.put("firstName", firstName);
@@ -83,6 +86,7 @@ public class RegisterTutorActivity extends AppCompatActivity {
                     jsonBody.put("email", email);
                     jsonBody.put("city", city);
                     jsonBody.put("phoneNumber", phoneNumber);
+                    jsonBody.put("instructionsType", instructionsType);
 
                     final String mRequestBody = jsonBody.toString();
 

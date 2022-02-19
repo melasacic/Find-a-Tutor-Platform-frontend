@@ -20,9 +20,7 @@ public class TutorsAdapter<T> extends ArrayAdapter<Tutors> {
     private View view;
     private ViewGroup viewGroup;
 
-   /* public TutorsAdapter( List<Tutors> tutors){
-        this.tutors=tutors;
-    }*/
+
 
     public TutorsAdapter(@NonNull Context context, @NonNull List<Tutors> tutors) {
         super(context,0, tutors);

@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-                String URL = "http://192.168.124.194:8080/api/v1/" + loginType + "/token";
+                String URL = "http://192.168.1.89:8080/api/v1/" + loginType + "/token";
 
                 JSONObject jsonBody = new JSONObject();
                 jsonBody.put("email", email);
@@ -111,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
 
+
                     @Override
                     protected Response<String> parseNetworkResponse(NetworkResponse response) {
                         String responseString = "";
@@ -131,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
     private void getTutorDetails() {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-            String URL = "http://192.168.124.194:8080/api/v1/tutor/details";
+            String URL = "http://192.168.1.89:8080/api/v1/tutor/details";
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                     response -> {
@@ -173,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
     private void getUserDetails() {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-            String URL = "http://192.168.124.194:8080/api/v1/user/details";
+            String URL = "http://192.168.1.89:8080/api/v1/user/details";
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                     response -> {
